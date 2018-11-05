@@ -1,0 +1,42 @@
+{
+  "name": "soa-class",
+  "version": "1.0.0",
+  "description": "A project to generate an interface that targets to abstract services to a main API",
+  "main": "index.js",
+  "scripts": {
+    "lint": "gulp lint",
+    "start": "node index.js",
+    "docs": "gulp docs"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/MatheusBNAguiar/soa-class.git"
+  },
+  "devDependencies": {
+    "eslint": "^4.15.0",
+    "eslint-config-airbnb-base": "^12.1.0",
+    "eslint-config-standard": "^12.0.0",
+    "eslint-plugin-import": "^2.8.0",
+    "eslint-plugin-mocha": "^4.11.0",
+    "eslint-plugin-node": "^7.0.1",
+    "eslint-plugin-promise": "^4.0.1",
+    "eslint-plugin-standard": "^4.0.0",
+    "gulp": "^3.9.1",
+    "gulp-eslint": "^4.0.2",
+    "gulp-nodemon": "^2.2.1",
+    "jsdoc-to-markdown": "^4.0.1"
+  },
+  "dependencies": {
+    "arthemis": "^1.0.3",
+    "express": "^4.16.4",
+    "express-validator": "^5.3.0",
+    "mongoose": "^5.3.9",
+    "nconf": "^0.10.0"
+  },
+  "author": "MatheusBNAguiar",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/MatheusBNAguiar/soa-class/issues"
+  },
+  "homepage": "https://github.com/MatheusBNAguiar/soa-class#readme"
+}

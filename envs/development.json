@@ -1,0 +1,11 @@
+{
+    "service": {
+        "port": 3000,
+        "resources": [
+        ]
+    },
+    "database": {
+        "name": "br-robotics",
+        "uri": "mongodb://localhost:27017/"
+    }
+}

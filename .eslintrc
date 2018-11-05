@@ -1,0 +1,12 @@
+{
+    "extends": "standard",
+    "rules": {},
+    "plugins": [
+        "mocha",
+        "webdriverio"
+    ],
+    "env": {
+        "mocha": true,
+        "webdriverio/wdio": true
+    }
+}
