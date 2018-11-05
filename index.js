@@ -3,6 +3,7 @@ const log = require('./src/utils/log')
 const brRobotics = require('./setup')
 
 global.log = log
+global.brRobotics = brRobotics
 
 process.on('SIGINT', () => {
   global.log('info', 'Shutting down Br Robotics Project after Ctrl+C', 'process')

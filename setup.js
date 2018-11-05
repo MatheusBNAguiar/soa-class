@@ -12,8 +12,10 @@ const Mongoose = require('./external/mongoose/Mongoose')
 
 // Services
 const ApiService = require('./src/services/ApiService')
+const OrderService = require('./src/services/resources/OrderService')
 
 // Schemas
+const orderSchema = require('./src/schemas/order')
 
 // Validators
 const dateValidator = require('./src/validators/date')
@@ -42,12 +44,14 @@ brRobotics.factory('validator.integer', integerValidator, 'app.validator')
 brRobotics.factory('validator.set', setValidator, 'app.validator')
 
 // Schemas
+brRobotics.literal('schema.order', orderSchema)
 
 // Drivers
 brRobotics.singleton('driver.activeRecord', Mongoose, 'database.uri', 'database.name')
 
 // Services
 brRobotics.singleton('service.api', ApiService, 'app.resources', 'app.app', 'app.port', 'app.router', 'app.handle', 'app.validator', 'utils.request')
+brRobotics.singleton('service.order', OrderService, 'driver.activeRecord', 'schema.order')
 
 // Utils
 brRobotics.literal('utils.request', request)
