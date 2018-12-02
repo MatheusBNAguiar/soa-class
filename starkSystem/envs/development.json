@@ -1,0 +1,16 @@
+{
+    "service": {
+        "port": 5000,
+        "resources": [
+            {
+                "route": "/request",
+                "router": "./starkSystem/src/api/request/router"
+            }            
+        ]
+    },
+    "database": {
+        "name": "starkSystem",
+        "uri": "mongodb://localhost:27017/"
+    },
+    "jwtSecret":"chatuba"
+}
