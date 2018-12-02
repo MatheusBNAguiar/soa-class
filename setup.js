@@ -3,8 +3,8 @@ const arthemis = require('arthemis')
 
 // Utils
 const env = require('./src/utils/env')
+global.env = env
 const request = require('./src/utils/request')
-
 // Drivers
 const { app, router, handle } = require('./external/express/app')
 const validator = require('./external/express/validator')
@@ -13,9 +13,11 @@ const Mongoose = require('./external/mongoose/Mongoose')
 // Services
 const ApiService = require('./src/services/ApiService')
 const OrderService = require('./src/services/resources/OrderService')
+const UserService = require('./src/services/resources/UserService')
 
 // Schemas
 const orderSchema = require('./src/schemas/order')
+const userSchema = require('./src/schemas/user')
 
 // Validators
 const dateValidator = require('./src/validators/date')
@@ -28,6 +30,7 @@ const brRobotics = arthemis()
 // App
 brRobotics.literal('app.app', app)
 brRobotics.literal('app.router', router)
+brRobotics.literal('app.jwtSecret', env.get('jwtSecret'))
 brRobotics.literal('app.handle', handle)
 brRobotics.literal('app.port', env.get('service').port)
 brRobotics.literal('app.resources', env.get('service').resources)
@@ -45,6 +48,7 @@ brRobotics.factory('validator.set', setValidator, 'app.validator')
 
 // Schemas
 brRobotics.literal('schema.order', orderSchema)
+brRobotics.literal('schema.user', userSchema)
 
 // Drivers
 brRobotics.singleton('driver.activeRecord', Mongoose, 'database.uri', 'database.name')
@@ -52,6 +56,7 @@ brRobotics.singleton('driver.activeRecord', Mongoose, 'database.uri', 'database.
 // Services
 brRobotics.singleton('service.api', ApiService, 'app.resources', 'app.app', 'app.port', 'app.router', 'app.handle', 'app.validator', 'utils.request')
 brRobotics.singleton('service.order', OrderService, 'driver.activeRecord', 'schema.order')
+brRobotics.singleton('service.user', UserService, 'driver.activeRecord', 'schema.user')
 
 // Utils
 brRobotics.literal('utils.request', request)

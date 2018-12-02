@@ -3,7 +3,7 @@ module.exports = {
     response.status(status)
       .json({ message, result }),
 
-  fail: (response, status, errors) =>
+  fail: (response, errors, status) =>
     response.status(status)
       .json({ status, errors })
 }
