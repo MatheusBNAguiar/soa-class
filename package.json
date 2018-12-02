@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "lint": "gulp lint",
-    "start": "node index.js",
+    "start":"node ./brRobotics  && node ./starkSystem  && node ./siteApi",
     "docs": "gulp docs"
   },
   "repository": {

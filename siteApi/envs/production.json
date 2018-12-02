@@ -1,0 +1,30 @@
+{
+    "service": {
+        "port": 3000,
+        "resources": [
+            {
+                "route": "/features",
+                "router": "./src/api/features/router"
+            },
+            {
+                "route": "/alerts",
+                "router": "./src/api/alerts/router"
+            },
+            {
+                "route": "/tasks",
+                "router": "./src/api/tasks/router"
+            }, {
+                "route": "/clients",
+                "router": "./src/api/clients/router"
+            },
+            {
+                "route": "/statistics",
+                "router": "./src/api/statistics/router"
+            }
+        ]
+    },
+    "database": {
+        "name": "br-robotics",
+        "uri": "mongodb://localhost:27017/"
+    }
+}

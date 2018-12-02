@@ -1,10 +1,10 @@
 {
     "service": {
-        "port": 3000,
+        "port": 4000,
         "resources": [
             {
                 "route": "/user",
-                "router": "./src/api/user/router"
+                "router": "./siteApi/src/api/user/router"
             }            
         ]
     },

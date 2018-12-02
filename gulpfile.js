@@ -1,7 +1,7 @@
 const gulp = require('gulp')
 const eslint = require('gulp-eslint')
 const nodemon = require('gulp-nodemon')
-const log = require('./src/utils/log')
+const log = require('./siteApi/src/utils/log')
 const jsdoc2md = require('jsdoc-to-markdown')
 const fs = require('fs')
 
@@ -12,7 +12,7 @@ gulp.task('lint', () => gulp.src(['**/*.js', '!node_modules/**'])
 
 gulp.task('develop', () => {
   const stream = nodemon({
-    script: 'index.js',
+    script:'./brRobotics',
     ext: 'js',
     tasks: ['lint']
   })

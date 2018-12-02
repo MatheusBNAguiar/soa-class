@@ -1,0 +1,16 @@
+{
+    "service": {
+        "port": 6000,
+        "resources": [
+            {
+                "route": "/request",
+                "router": "./brRobotics/src/api/request/router"
+            }            
+        ]
+    },
+    "database": {
+        "name": "brRobotics",
+        "uri": "mongodb://localhost:27017/"
+    },
+    "jwtSecret":"chatuba"
+}
