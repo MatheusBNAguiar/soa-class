@@ -1,6 +1,6 @@
 module.exports = validator => ({
   existsAsString: (types, message) => validator
-    .param(types)
+    .body(types)
     .exists()
     .isString()
     .withMessage(message)

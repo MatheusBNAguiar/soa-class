@@ -1,3 +1,4 @@
+const middlewares = require('../middlewares')
 class ApiService {
   constructor (resources, app, port, router, handle, validator, request) {
     this.resources = resources
@@ -41,20 +42,6 @@ class ApiService {
     global.log('info', `Listening at port ${this.port}`, 'api')
   }
 
-  addEndpoint (endpoint, method, callback) {
-    if (!endpoint || endpoint === '') {
-      throw TypeError('Endpoint not found')
-    }
-
-    const methodName = typeof method === 'string' && method.toLowerCase()
-    if (typeof this.app[methodName] === 'function' && ['get', 'post', 'put', 'patch', 'delete'].includes(methodName)) {
-      this.app[methodName](endpoint, callback)
-      global.log('info', `Registered "${endpoint}"`, 'api')
-    } else {
-      throw TypeError('Only GET, POST, PUT or DELETE methods are allowed')
-    }
-  }
-
   sanitizeData () {
     return (req, res, next) => {
       const errors = this.validator.validationResult(req)
@@ -66,6 +53,13 @@ class ApiService {
     }
   }
 
+  addInfo (extraInfo) {
+    return (req, res, next) => {
+      req.routeExtraInfo = extraInfo
+      return next()
+    }
+  }
+
   createResource (route, resources = []) {
     const router = this.router()
     resources.forEach(({
@@ -73,7 +67,7 @@ class ApiService {
       endpoint,
       callback,
       validators = [],
-      authenticated = true
+      extraInfo = {}
     }) => {
       if (!endpoint || endpoint === '') {
         throw TypeError('Endpoint not found')
@@ -82,8 +76,10 @@ class ApiService {
       if (typeof router[methodName] === 'function' && ['get', 'post', 'put', 'patch', 'delete'].includes(methodName)) {
         router[methodName](
           endpoint,
-          validators,
           this.sanitizeData(),
+          this.addInfo(extraInfo),
+          validators,
+          middlewares,
           callback
         )
         global.log('info', `Registered ${method.toUpperCase()} "${route}${endpoint}"`, 'api')

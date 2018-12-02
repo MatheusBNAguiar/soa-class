@@ -2,7 +2,6 @@ const authenticateUtils = require('../utils/authentication')
 const { fail } = require('../utils/request')
 
 module.exports = (req, res, next) => {
-  console.log(req.routeExtraInfo)
   let { needAuth } = req.routeExtraInfo
   if (typeof needAuth === 'undefined') {
     needAuth = true

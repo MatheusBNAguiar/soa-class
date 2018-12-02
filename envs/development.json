@@ -3,13 +3,14 @@
         "port": 3000,
         "resources": [
             {
-                "route": "/order",
-                "router": "./src/api/order/router"
+                "route": "/user",
+                "router": "./src/api/user/router"
             }            
         ]
     },
     "database": {
         "name": "br-robotics",
         "uri": "mongodb://localhost:27017/"
-    }
+    },
+    "jwtSecret":"chatuba"
 }

@@ -8,7 +8,11 @@ module.exports = [
   {
     method: 'post',
     endpoint: '/',
-    callback: controller.setOrder
+    callback: controller.setOrder,
+    validators: [
+      existsOptionallyAsInteger(['limit'], 'must exist and be an integer'),
+      existsOptionallyInsideSet(['status'], ['open', 'closed'], 'must exist as "open" or "closed"')
+    ]
   },
   {
     method: 'delete',
