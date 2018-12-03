@@ -10,14 +10,14 @@ class RequestService {
     const RequestModel = this.model
     const requestData = { items, totalPrice }
     return new RequestModel(requestData).save()
-      .then(re => {
+      .then(request => {
         global.log('success', `Request saved`, 'request-br-robotics')
-        return user
+        return request
       })
       .catch(err => {
-        global.log('error', err, 'user')
+        global.log('error', err, 'request-br-robotics')
         return { error: err }
       })
   }
 }
-module.exports = UserService
+module.exports = RequestService

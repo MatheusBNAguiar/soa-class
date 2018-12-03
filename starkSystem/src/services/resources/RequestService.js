@@ -1,7 +1,7 @@
 class RequestService {
   constructor (driver, schema) {
     this.driver = driver
-    this.schemaName = 'BrRoboticsRequest'
+    this.schemaName = 'StarkSystemRequest'
     this.schema = schema(driver)
     this.model = driver.createModel(this.schemaName, this.schema)
   }
@@ -10,14 +10,14 @@ class RequestService {
     const RequestModel = this.model
     const requestData = { items, totalPrice }
     return new RequestModel(requestData).save()
-      .then(re => {
-        global.log('success', `Request saved`, 'request-br-robotics')
-        return user
+      .then(request => {
+        global.log('success', `Request saved`, 'request-stark-system')
+        return request
       })
       .catch(err => {
-        global.log('error', err, 'user')
+        global.log('error', err, 'request-stark-system')
         return { error: err }
       })
   }
 }
-module.exports = UserService
+module.exports = RequestService
