@@ -12,23 +12,16 @@ class OrderService {
       .exec()
   }
 
-  save (alertType) {
-    const AlertTypeModel = this.model
-    return this.getByType(alertType.type)
-      .then(type => {
-        if (type) {
-          type.set(alertType)
-          return type.save()
-        }
-        return new AlertTypeModel(alertType).save()
-      })
-      .then(type => {
-        global.log('success', `Alert type "${type.type}" saved`, 'alert-type')
-        return type
+  save (order) {
+    const OrderModel = this.model
+    return new OrderModel(order).save()
+      .then(order => {
+        global.log('success', `Order  saved`, 'order')
+        return order
       })
       .catch(err => {
-        global.log('error', err, 'alert-type')
-        return err
+        global.log('error', err, 'order')
+        return { error: err }
       })
   }
 }

@@ -1,14 +1,32 @@
 module.exports = driver => driver.createSchema({
-  items: [{
-    type: driver.ObjectId,
-    ref: 'Item'
-  }],
   card: {
-    type: driver.ObjectId,
-    ref: 'Card'
+    type: Object
   },
-  user: {
-    type: driver.ObjectId,
-    ref: 'User'
+  cart: {
+    type: Object
+  },
+  address: {
+    type: Object
+  },
+  client: {
+    type: Object
+  },
+  createdDate: {
+    type: Date
+  },
+  priceStarkSystem: {
+    type: Number
+  },
+  priceBrRobotics: {
+    type: Number
+  },
+  sum: {
+    type: String
+  },
+  authCode: {
+    type: String
+  },
+  paymentValue: {
+    type: String
   }
 })

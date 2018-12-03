@@ -3,9 +3,14 @@
         "port": 4000,
         "resources": [
             {
+                "route": "/order",
+                "router": "./siteApi/src/api/order/router"
+            } ,
+            {
                 "route": "/user",
                 "router": "./siteApi/src/api/user/router"
-            }            
+            }
+                       
         ]
     },
     "database": {
